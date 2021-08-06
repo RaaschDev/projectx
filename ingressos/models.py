@@ -10,6 +10,8 @@ class IngressoModel(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     lote = models.SmallIntegerField()
     quantidade = models.IntegerField()
+    status = models.BooleanField(default=True)
 
+    
     def __str__(self):
         return self.name

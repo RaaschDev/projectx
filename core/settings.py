@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'eventos',
     'artistas',
     'ingressos',
+    'fornecedores',
     'bares',
     'comidas',
     'bebidas',
