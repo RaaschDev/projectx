@@ -16,9 +16,9 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.conf import settings
 from django.conf.urls.static import static
+from .viewset import MyTokenObtainPairView, UserViewSet
 
 from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
     TokenRefreshView,
 )
 router = routers.DefaultRouter()
@@ -31,6 +31,7 @@ router.register(r'empresa', EmpresaViewSet)
 router.register(r'evento', EventoViewSet)
 router.register(r'ingressos', IngressoViewSet)
 router.register(r'perfil_empresa', PerfilEmpresaViewSet)
+router.register(r'users', UserViewSet)
 
 
 schema_view = get_schema_view(
@@ -51,7 +52,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('', include('eventos.urls')),
     path('admin/', admin.site.urls),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('retorno/pagseguro/', include('pagseguro.urls')),
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
