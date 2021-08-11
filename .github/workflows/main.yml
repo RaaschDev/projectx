@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
-          target: “~/new_hurry_back“
+          target: “/root/new_hurry_back“
 
       # Executar script de produção
       - name: Run production scripts
